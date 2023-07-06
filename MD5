@@ -1,8 +1,8 @@
-116f24325d5dd1c0a16d172f63fb70fa *DESCRIPTION
+9361e7825cad3d1d7537e4947f825171 *DESCRIPTION
 85aef6b1e90ddc9ef0cfb14557e65c2d *NAMESPACE
 f0b4de106dc18209396b29faa3c30367 *R/plugin.R
 e9ca57afab9b08aab510be945cf61929 *R/status_codes.R
 619fbc5045cce6333914d2a63594ca66 *R/zzz.R
-7a9f9cf6b01e150725a6329676b9caf7 *man/Example_01.Rd
+97c1a1d9604dcf5ed0a694ccb4466c32 *man/Example_01.Rd
 de9c75e2fe091f7220ba7cc56df275f5 *man/ROI.plugin.osqp-package.Rd
 cdfa13d4f111cb2aada55cf5663a6af8 *tests/test_osqp.R
