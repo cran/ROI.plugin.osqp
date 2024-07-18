@@ -45,21 +45,20 @@ solve_OP <- function(x, control = list()){
         A <- constr$L
         lbA <- rep.int(-Inf, nconstraints)
         ubA <- rep.int( Inf, nconstraints)
-        cdir <- factor(constr$dir,  c("==", "<=", ">="))
-        ctab <- tabulate(cdir)
+        ctab <- c("==", "<=", ">=") %in% constr$dir
         rhs <- constr$rhs
-        if ( ctab[1L] ) {
+        if (ctab[1L]) {
             b <- constr$dir == "=="
             lbA[b] <- rhs[b]
             ubA[b] <- rhs[b]
         }
 
-        if ( ctab[2L] ) {
+        if (ctab[2L]) {
             b <- constr$dir == "<="
             ubA[b] <- rhs[b]
         }
 
-        if ( ctab[3L] ) {
+        if (ctab[3L]) {
             b <- constr$dir == ">="
             lbA[b] <- rhs[b]
         }
@@ -72,8 +71,8 @@ solve_OP <- function(x, control = list()){
     if ( !is_lower_unbounded(x) ) {
         lb <- to_dense_vector(bounds(x)$lower, nvariables)
         j <- which(lb != -Inf)
-        LB <- simple_triplet_matrix(seq_along(j), j, rep.int(1L, length(j)),
-            nrow = length(j), ncol = nvariables)
+        LB <- simple_triplet_matrix(i = seq_along(j), j = j, v = rep.int(1L, length(j)),
+                                    nrow = length(j), ncol = nvariables)
         lbLB <- lb[j]
         ubLB <- rep.int(Inf, length(j))
     } else {
@@ -83,8 +82,8 @@ solve_OP <- function(x, control = list()){
     if ( !is_upper_unbounded(x) ) {
         ub <- to_dense_vector(bounds(x)$upper, nvariables, Inf)
         j <- which(lb != -Inf)
-        UB <- simple_triplet_matrix(seq_along(j), j, rep.int(1L, length(j)),
-            nrow = length(j), ncol = nvariables)
+        UB <- simple_triplet_matrix(i = seq_along(j), j = j, v = rep.int(1L, length(j)),
+                                    nrow = length(j), ncol = nvariables)
         lbUB <- rep.int(-Inf, length(j))
         ubUB <- ub[j]
     } else {
